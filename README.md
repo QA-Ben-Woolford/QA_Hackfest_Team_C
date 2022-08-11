@@ -15,6 +15,13 @@ and
 
 ### Front End
 
+### Trello Link
+[View Our Trello!](https://trello.com/b/PukNG31j/qahackfestteamc)
 
+### ERD Diagram
+This is our ERD for the Hackfest
+
+
+![Our ERD](Resources/hackfestTeamC.drawio.png "This is our ERD")
 
 
