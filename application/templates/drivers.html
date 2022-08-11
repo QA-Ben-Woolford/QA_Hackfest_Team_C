@@ -10,7 +10,7 @@
             <a style="color:white;margin-right:100px;" href=packages>Packages</a>
         </nav>
         <h3> Drivers: </h3>
-        {% for driver in Drivers%}
+        {% for driver in drivers%}
         {{driver.__str__()}}<br>
         <a href = "{{url_for('delete_driver, driver_id = Drivers.driver_id)}}"> Delete</a><br>
         {% endfor %}

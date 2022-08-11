@@ -12,11 +12,9 @@ class DriverForm(FlaskForm):
 class DeliveryForm(FlaskForm):
     driver_id = SelectField('Driver', choices= [])
     delivery_date = DateField('Delivery Date', validators=[DataRequired()])
-    driver_id = IntegerField(validators = [DataRequired()])
 
 
 class PackageForm(FlaskForm):
-    package_id = SelectField('Delivery Number', choices = [])
+    delivery_id = SelectField('Delivery Number', choices = [])
     address = StringField ('Deluvery Address', validators =[DataRequired(), length (min=10, max = 50)])
     status = BooleanField ('Delivery Status', validators = [DataRequired()])
-    delivery_id = IntegerField('Delivery ID', validators = [DataRequired()])
