@@ -14,3 +14,4 @@ class Packages(db.model):
     address = db.Column(db.string(50), nullable = False)
     staus = db.Column(db.Boolean, ) #How to do boolean?
 
+#tgsrtgg
