@@ -1,19 +1,9 @@
-<html>
-    <head>
-        <title> Delivery Routing </title>
-        <meta author> Hackfest Team C </meta>
-    </head>
-    <body>
-        <nav style="background: black; padding: 15px; text-align: center; font-size:16px;">
-            <a style="color:white;margin-right:100px;" href=drivers></a>Drivers</a>
-            <a style="color:white;margin-right:100px;" href=delivery'>Deliveries</a>
-            <a style="color:white;margin-right:100px;" href=packages>Packages</a>
-        </nav>
+{% extends 'layout.html'%}
+{% block body %}
         <h3> Packages : </h3>
         {% for package in packages%}
         {{package.__str__()}}<br>
         <a href = "{{url_for('delete_package, order_id = Packages.package_id)}}"> Delete</a><br>
         {% endfor %}
         <a href = "{{url_for('add_package')}}" > Add Package</a>
-    </body>
-</html>
+{% endblock body%}
