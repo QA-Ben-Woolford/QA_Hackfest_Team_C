@@ -1,14 +1,5 @@
-<html>
-    <head>
-        <title> Delivery Routing </title>
-        <meta author> Hackfest Team C </meta>
-    </head>
-    <body>
-        <nav style="background: black; padding: 15px; text-align: center; font-size:16px;">
-            <a style="color:white;margin-right:100px;" href=drivers>Drivers</a>
-            <a style="color:white;margin-right:100px;" href=delivery>Deliveries</a>
-            <a style="color:white;margin-right:100px;" href=packages>Packages</a>
-        </nav>
+{% extends 'layout.html'%}
+{% block body %}
         <h3> Drivers: </h3>
         {% for driver in Drivers%}
         {{driver.__str__()}}<br>
@@ -16,5 +7,4 @@
         {% endfor %}
         <a href = "{{url_for('add_driver')}}" > Add Driver</a>
         {% endfor %}
-    </body>
-</html>
+{% endblock body%}
