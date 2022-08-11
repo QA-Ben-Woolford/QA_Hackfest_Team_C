@@ -103,4 +103,4 @@ def delete_package(package_id):
     package = package.query.get(package_id)
     db.session.delete(package)
     db.session.commit()
-    return redirect(url_for('budgets'))
+    return redirect(url_for('delivery'))
