@@ -94,7 +94,7 @@ def add_package():
 @app.route('/packages/<int:delivery_id>')
 def packages_specific(delivery_id):
     packages = package.query.filter_by(delivery_id = delivery_id)
-    return render_template('packages.html', packages = packages, )
+    return render_template('packages.html', packages = packages)
 
 
 #D - packages
@@ -104,3 +104,6 @@ def delete_package(package_id):
     db.session.delete(package)
     db.session.commit()
     return redirect(url_for('delivery'))
+
+
+@app.route('/')
