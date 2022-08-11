@@ -9,12 +9,11 @@
             <a style="color:white;margin-right:100px;" href=delivery>Deliveries</a>
             <a style="color:white;margin-right:100px;" href=packages>Packages</a>
         </nav>
-        <h3> Drivers: </h3>
-        {% for driver in Drivers%}
-        {{driver.__str__()}}<br>
-        <a href = "{{url_for('delete_driver, driver_id = Drivers.driver_id)}}"> Delete</a><br>
+        <h3> Packages : </h3>
+        {% for package in packages%}
+        {{package.__str__()}}<br>
+        <a href = "{{url_for('delete_package, order_id = Packages.order_id)}}"> Delete</a><br>
         {% endfor %}
-        <a href = "{{url_for('add_driver')}}" > Add Driver</a>
-        {% endfor %}
+        <a href = "{{url_for('add_package')}}" > Add Package</a>
     </body>
 </html>
