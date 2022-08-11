@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title> Delivery Routing </title>
+        <meta author> Hackfest Team C </meta>
+    </head>
+    <body>
+        <h3> Deliveries : </h3>
+        {% for del in delivery%}
+        {{del.__str__()}}<br>
+        <a href = "{{url_for('delete_delivery', delivery_id = Delivery.delivery_id)}}"> Delete</a><br>
+        {% endfor %}
+        <a href = "{{url_for('add_delivery')}}" > Add Delivery</a>
+    </body>
+</html>
