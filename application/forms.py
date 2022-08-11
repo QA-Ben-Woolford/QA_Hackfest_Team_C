@@ -16,7 +16,7 @@ class DeliveryForm(FlaskForm):
 
 
 class PackageForm(FlaskForm):
-    order_id = SelectField('Delivery Number', choices = [])
+    package_id = SelectField('Delivery Number', choices = [])
     address = StringField ('Deluvery Address', validators =[DataRequired(), length (min=10, max = 50)])
     status = BooleanField ('Delivery Status', validators = [DataRequired()])
     delivery_id = IntegerField('Delivery ID', validators = [DataRequired()])

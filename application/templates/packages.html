@@ -12,7 +12,7 @@
         <h3> Packages : </h3>
         {% for package in packages%}
         {{package.__str__()}}<br>
-        <a href = "{{url_for('delete_package, order_id = Packages.order_id)}}"> Delete</a><br>
+        <a href = "{{url_for('delete_package, order_id = Packages.package_id)}}"> Delete</a><br>
         {% endfor %}
         <a href = "{{url_for('add_package')}}" > Add Package</a>
     </body>
