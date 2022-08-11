@@ -1,0 +1,13 @@
+{% extends 'layout.html'%}
+{% block body %}
+<div class = "Form">
+    <form method = "POST" action="">
+        {{form.package_id.label}} {{form.package_id}}
+        {{form.address.label}} {{form.address}}
+        {{form.status.label}} {{form.status}}
+        {{form.package_id.label}} {{form.package_id}}
+        <br>
+        {{form.submit}}
+    </form>
+</div>
+{% endblock body%}
