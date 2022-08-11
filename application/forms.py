@@ -7,3 +7,7 @@ from datetime import date, datetime
 class DriverForm(FlaskForm):
     driver_name = StringField('Driver Name', validators=[DataRequired(), length (min=2, max = 50) ])
     submit = SubmitField('Enter')
+
+
+class DeliveryForm(FlaskForm):
+    
