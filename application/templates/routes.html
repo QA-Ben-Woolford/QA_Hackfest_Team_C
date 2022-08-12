@@ -1,0 +1,7 @@
+{% extends 'layout.html'%}
+{% block body %}
+        <h3> Routes: </h3>
+        {% for address in addresses %}
+        {{ address }}<br>
+        {% endfor %}
+{% endblock body%}

@@ -108,7 +108,7 @@ def delete_package(package_id):
     return redirect(url_for('delivery'))
 
 #Routes for routing
-@app.route('/routing')
+@app.route('/routing', methods = ['GET', 'POST'])
 def routes():
     form = RoutingForm()
     deliverys = Delivery.query.all()
@@ -116,9 +116,13 @@ def routes():
         form.delivery_id.choices.append((delivery.delivery_id, f'{delivery.delivery_id}'))
     if request.method == 'POST':
         selection = form.delivery_id.data
-        return redirect(url_for('route_specific/<selection>'))
+        return redirect(url_for('route_specific', delivery_id = selection))
     return render_template('choose_routes.html', form = form, deliverys = deliverys )
 
 @app.route('/routing/<int:delivery_id>')
 def route_specific(delivery_id):
-    return redirect(url_for('delivery'))
+    packages = Packages.query.filter_by(delivery_id = delivery_id)
+    addresses = []
+    for package in packages:
+        addresses.append(package.address)
+    return render_template('routes.html', addresses = addresses)
