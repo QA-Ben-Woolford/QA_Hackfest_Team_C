@@ -3,14 +3,17 @@ from itertools import combinations
 
 class WeightedGraph():
 
-    def __init__(self, addresses):
+    def __init__(self, addresses, mst = False):
         self.addresses = {i:address for i, address in enumerate(addresses)}
         self.nodes = []
 
         for i in self.addresses.keys():
             self.nodes.append(i)
         
-        self.edges = [(p[0], p[1], randint(1,100)) for p in combinations(self.nodes, 2)]
+        if mst:
+            self.edges = []
+        else:
+            self.edges = [(p[0], p[1], randint(1,100)) for p in combinations(self.nodes, 2)]
 
 
     def get_edges(self):
@@ -23,7 +26,7 @@ class WeightedGraph():
         self.nodes.append(node)
     
     def add_edge(self, node1, node2, weight):
-        self.nodes.append((node1,node2,weight))
+        self.edges.append((node1,node2,weight))
 
 # union-find implementation - these are the functions used to implement the union-find method within the Kruskals algo
     def find(self, root, i):
@@ -44,7 +47,7 @@ class WeightedGraph():
 
     # Kruskals implementation example. Note that you will need to adapt this based on your implementation of graphs, if you plan to use this:
     def kruskals(self):
-        mst = WeightedGraph(self.addresses)
+        mst = WeightedGraph(self.addresses, True)
         edges = self.get_edges()
         edges.sort(key = lambda t: t[2])
         root, rank = self.get_nodes(), [0 for _ in self.get_nodes()]
