@@ -10,7 +10,7 @@ pip3 install -r requirements.txt
 echo "create database"
 python3 create.py 
 echo "run flask app"
-gunicorn --bind=0.0.0.0:5000 app:app
+python3 -m gunicorn --bind=0.0.0.0:5000 app:app
 #python3 app.py
 EOF
 
