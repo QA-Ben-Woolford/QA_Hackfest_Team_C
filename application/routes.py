@@ -2,6 +2,7 @@ from select import select
 from application import app,db
 from application.models import *
 from application.forms import *
+from application.kruskals_graph import *
 from flask import url_for, request, redirect, render_template
 
 # Home
@@ -124,5 +125,9 @@ def route_specific(delivery_id):
     packages = Packages.query.filter_by(delivery_id = delivery_id)
     addresses = []
     for package in packages:
-        addresses.append(package.address)
-    return render_template('routes.html', addresses = addresses)
+        if package.status == False:
+            addresses.append(package.address)
+    best_routes = WeightedGraph(addresses)
+    mst = best_routes.kruskals()
+    edges = mst.edges
+    return render_template('routes.html', addresses = edges)
