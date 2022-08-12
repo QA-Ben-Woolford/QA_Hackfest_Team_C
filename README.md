@@ -11,10 +11,17 @@ The application will have drivers, deliveries and packages. Thet should all inte
 and 
 
 ### Risk assessment
-![risk]()
+[Risk Assessment](https://docs.google.com/spreadsheets/d/1EHHeP2lZ7pbZWxwDNEXAO8DxUgsf2_ae8RwhqIQ28K8/edit#gid=0)
 
 ### Front End
 
+### Trello Link
+[View Our Trello!](https://trello.com/b/PukNG31j/qahackfestteamc)
 
+### ERD Diagram
+This is our ERD for the Hackfest
+
+
+![Our ERD](Resources/hackfestTeamC.drawio.png "This is our ERD")
 
 
