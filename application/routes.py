@@ -1,3 +1,4 @@
+from select import select
 from application import app,db
 from application.models import *
 from application.forms import *
@@ -104,4 +105,20 @@ def delete_package(package_id):
     package = Packages.query.get(package_id)
     db.session.delete(package)
     db.session.commit()
+    return redirect(url_for('delivery'))
+
+#Routes for routing
+@app.route('/routing')
+def routes():
+    form = RoutingForm()
+    deliverys = Delivery.query.all()
+    for delivery in deliverys:
+        form.delivery_id.choices.append((delivery.delivery_id, f'{delivery.delivery_id}'))
+    if request.method == 'POST':
+        selection = form.delivery_id.data
+        return redirect(url_for('route_specific/<selection>'))
+    return render_template('choose_routes.html', form = form, deliverys = deliverys )
+
+@app.route('/routing/<int:delivery_id>')
+def route_specific(delivery_id):
     return redirect(url_for('delivery'))

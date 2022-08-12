@@ -17,8 +17,12 @@ class DeliveryForm(FlaskForm):
 
 class PackageForm(FlaskForm):
     delivery_id = SelectField('Delivery Number', choices = [])
-    address = StringField ('Deluvery Address', validators =[DataRequired(), length (min=10, max = 50)])
+    address = StringField ('Delivery Address', validators =[DataRequired(), length (min=10, max = 50)])
     status = BooleanField ('Delivery Status')
     submit = SubmitField('Enter')
 
     #this is just a test
+
+class RoutingForm(FlaskForm):
+    delivery_id = SelectField('Delivery Number', choices = [])
+    submit = SubmitField('Enter')
