@@ -3,8 +3,13 @@
         <title> Delivery routing </title>
         <meta author> Hackfest Team C </meta>
     </head>
-    <body style=" background-color: slategrey;">
+    <body style="text-align: center; background-color: slategrey; font-family: 'Lucida Console', 'Courier New', monospace; ">
         <h1 style= "text-align: center; font-size:45px;"><u>Delivery Routing System</u></h1>
+        <nav style="background: rgb(199, 9, 9); padding: 15px; font-size:16px;">
+            <a style="color:white;margin-right:100px;" href="{{url_for('drivers')}}">Drivers</a>
+            <a style="color:white;margin-right:100px;" href="{{url_for('delivery')}}">Deliveries</a>
+            <a style="color:white;margin-right:100px;" href="{{url_for('routes')}}">Routing</a>
+        </nav>
     </body>
     {% block body%}
     {% endblock body %}

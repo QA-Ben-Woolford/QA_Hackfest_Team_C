@@ -1,12 +1,9 @@
-<html>
-    <head>
-        <title> Delivery Routing </title>
-        <meta author> Hackfest Team C </meta>
-    </head>
-    <body>
+{% extends 'layout.html'%}
+{% block body %}
         <h3> Drivers: </h3>
-        {% for driver in Drivers%}
-        {{driver}}<br>
+        {% for driver in drivers%}
+        {{driver.__str__()}}<br>
+        <a href = "{{url_for('delete_driver', driver_id = driver.driver_id)}}">Delete</a><br>
         {% endfor %}
-    </body>
-</html>
+        <a href = "{{ url_for('add_driver') }}">Add Driver</a>
+{% endblock body%}
