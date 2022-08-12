@@ -130,4 +130,8 @@ def route_specific(delivery_id):
     best_routes = WeightedGraph(addresses)
     mst = best_routes.kruskals()
     edges = mst.edges
-    return render_template('routes.html', addresses = edges)
+    a_edges = []
+    for edge in edges:
+        a_edges.append((best_routes.addresses[edge[0]],best_routes.addresses[edge[1]], edge[2]))
+
+    return render_template('routes.html', addresses = a_edges)

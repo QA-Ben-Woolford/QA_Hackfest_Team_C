@@ -4,10 +4,10 @@ from itertools import combinations
 class WeightedGraph():
 
     def __init__(self, addresses):
-        self.addresses = addresses
+        self.addresses = {i:address for i, address in enumerate(addresses)}
         self.nodes = []
 
-        for i in range(len(addresses)):
+        for i in self.addresses.keys():
             self.nodes.append(i)
         
         self.edges = [(p[0], p[1], randint(1,100)) for p in combinations(self.nodes, 2)]
