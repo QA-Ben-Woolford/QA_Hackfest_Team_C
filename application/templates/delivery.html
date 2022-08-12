@@ -1,9 +1,10 @@
 {% extends 'layout.html'%}
 {% block body %}
         <h3> Deliveries : </h3>
-        {% for del in delivery%}
-        {{del.__str__()}}<br>
-        <a href = "{{url_for('delete_delivery', delivery_id = Delivery.delivery_id)}}"> Delete</a><br>
+        {% for delivery in deliverys%}
+        {{delivery.__str__()}}<br>
+        <a href = "{{url_for('delete_delivery', delivery_id = delivery.delivery_id)}}"> Delete</a><br>
+        <a href = "{{url_for('packages_specific', delivery_id = delivery.delivery_id)}}"> View Packages</a><br>
         {% endfor %}
         <a href = "{{url_for('add_delivery')}}" > Add Delivery</a>
 {% endblock body%}

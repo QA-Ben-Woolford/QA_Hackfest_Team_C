@@ -3,8 +3,7 @@
         <h3> Drivers: </h3>
         {% for driver in drivers%}
         {{driver.__str__()}}<br>
-        <a href = "{{url_for('delete_driver, driver_id = Drivers.driver_id)}}"> Delete</a><br>
+        <a href = "{{url_for('delete_driver', driver_id = driver.driver_id)}}">Delete</a><br>
         {% endfor %}
-        <a href = "{{url_for('add_driver')}}" > Add Driver</a>
-        {% endfor %}
+        <a href = "{{ url_for('add_driver') }}">Add Driver</a>
 {% endblock body%}

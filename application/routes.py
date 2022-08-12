@@ -13,13 +13,14 @@ def home():
 @app.route('/add_driver' , methods = ['GET', 'POST'])
 def add_driver():
     form = DriverForm()
-    if form.validate_on_submit():
+    if request.method == 'POST':
         driver_name = form.driver_name.data
-        add_driver = Drivers(driver_name = driver_name,)
+        add_driver = Drivers(driver_name = driver_name)
         db.session.add(add_driver)
         db.session.commit()
         return redirect(url_for('drivers'))
-    return render_template('add_drivers.html', form = form)
+    return render_template('add_driver.html', form = form)
+
 #R - Drivers
 @app.route('/drivers')
 def drivers():
@@ -30,8 +31,8 @@ def drivers():
 @app.route('/delete_driver/<int:driver_id>')
 def delete_driver(driver_id):
     driver = Drivers.query.get(driver_id)
-    for delivery in driver.delivery:
-        for package in delivery.packages:
+    for delivery in driver.driver_delivery:
+        for package in delivery.delivery_packages:
             db.session.delete(package)
         db.session.delete(delivery)
     db.session.delete(driver)
@@ -43,31 +44,31 @@ def delete_driver(driver_id):
 @app.route('/add_delivery' , methods = ['GET', 'POST'])
 def add_delivery():
     form = DeliveryForm()
-    drivers = Driver.query.all()
+    drivers = Drivers.query.all()
     for driver in drivers:
         form.driver_id.choices.append((driver.driver_id, f'{driver.driver_name}'))
-    if form.validate_on_submit():
+    if request.method == 'POST':
         delivery_date = form.delivery_date.data
         driver_id = form.driver_id.data
         add_delivery = Delivery(delivery_date = delivery_date, driver_id = driver_id)
         db.session.add(add_delivery)
         db.session.commit()
-        return redirect(url_for('deliverys'))
+        return redirect(url_for('delivery'))
     return render_template('add_deliverys.html', form = form)
 
 
 #R - delivery
 @app.route('/delivery')
 def delivery():
-    delivery = Delivery.query.all()
-    return render_template('delivery.html', delivery = delivery)
+    deliverys = Delivery.query.all()
+    return render_template('delivery.html', deliverys = deliverys)
 
 
 #D - delivery
 @app.route('/delete_delivery/<int:delivery_id>')
 def delete_delivery(delivery_id):
     delivery = Delivery.query.get(delivery_id)
-    for package in delivery.packages:
+    for package in delivery.delivery_packages:
         db.session.delete(package)
     db.session.delete(delivery)
     db.session.commit()
@@ -84,7 +85,7 @@ def add_package():
         address = form.address.data
         status = form.status.data
         delivery_id = form.delivery_id.data
-        add_package = package(address = address,  status = status, delivery_id = delivery_id )
+        add_package = Packages(address = address,  status = status, delivery_id = delivery_id )
         db.session.add(add_package)
         db.session.commit()
         return redirect(url_for('delivery'))
@@ -93,17 +94,14 @@ def add_package():
 #R - packages
 @app.route('/packages/<int:delivery_id>')
 def packages_specific(delivery_id):
-    packages = package.query.filter_by(delivery_id = delivery_id)
+    packages = Packages.query.filter_by(delivery_id = delivery_id)
     return render_template('packages.html', packages = packages)
 
 
 #D - packages
 @app.route('/delete_package/<int:package_id>')
 def delete_package(package_id):
-    package = package.query.get(package_id)
+    package = Packages.query.get(package_id)
     db.session.delete(package)
     db.session.commit()
     return redirect(url_for('delivery'))
-
-
-@app.route('/')
