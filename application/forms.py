@@ -20,3 +20,5 @@ class PackageForm(FlaskForm):
     address = StringField ('Deluvery Address', validators =[DataRequired(), length (min=10, max = 50)])
     status = BooleanField ('Delivery Status')
     submit = SubmitField('Enter')
+
+    #this is just a test
